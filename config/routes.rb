@@ -1,4 +1,6 @@
 Komerko::Application.routes.draw do
+  resources :cart_items
+
   resources :carts
 
   resources :items do
