@@ -1,3 +1,19 @@
-<% @items.each do |item| %>
-    <%= item.name %>
-<% end %>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @items.each do |item| %>
+            <tr>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+                <td><button class="btn">Add to Cart</button></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

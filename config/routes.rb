@@ -1,5 +1,11 @@
 Komerko::Application.routes.draw do
-  resources :items
+  resources :carts
+
+  resources :items do
+    collection do
+      get 'store'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
