@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   # GET /items/store
   def store
     @items = Item.all
+    render layout: 'third_party'
   end
 
   # GET /items
