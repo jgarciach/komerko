@@ -11,7 +11,13 @@
             <tr>
                 <td><%= item.name %></td>
                 <td><%= item.price %></td>
-                <td><button class="btn">Add to Cart</button></td>
+                <td>
+                    <%= form_for :cart_item, url: '/cart_items', method: :post, remote: true do |f| %>
+                        <%= f.hidden_field :item_id, value: item.id %>
+                        <%= f.text_field :quantity %>
+                        <%= f.submit "Add to Cart" %>
+                    <% end %>
+                </td>
             </tr>
         <% end %>
     </tbody>
