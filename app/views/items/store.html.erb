@@ -1,25 +1,20 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Add to Cart</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="section">
+    <h2 class="section-title">Blends</h2>
+    <div class="items">
         <% @items.each do |item| %>
-            <tr>
-                <td><%= item.name %></td>
-                <td><%= item.price %></td>
-                <td>
-                    <%= form_for :cart_item, url: '/cart_items', method: :post, remote: true do |f| %>
-                        <%= f.hidden_field :item_id, value: item.id %>
-                        <%= f.text_field :quantity %>
-                        <%= f.submit "Add to Cart" %>
-                    <% end %>
-                </td>
-            </tr>
+            <div class="item">
+                <div class="image">
+                    <img class="item-image" style="-webkit-user-select: none" src="http://placehold.it/160">
+                </div>    
+                <h3 class="item-name">
+                    <%= item.name %>
+                </h3>
+                <span class="item-price">$<%= item.price %></span>
+                <div class="item-content">
+                    <p class="item-description"><%= item.description %></p>
+                </div> 
+            </div>
         <% end %>
-    </tbody>
-</table>
-
+    </div>
+</div>
+<%= stylesheet_link_tag '/assets/store.css' %>
