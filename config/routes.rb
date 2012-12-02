@@ -7,6 +7,9 @@ Komerko::Application.routes.draw do
     collection do
       get 'store'
     end
+    member do
+      get 'preview'
+    end
   end
 
   # The priority is based upon order of creation:

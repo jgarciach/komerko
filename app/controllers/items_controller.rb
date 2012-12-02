@@ -1,4 +1,11 @@
 class ItemsController < ApplicationController
+  # GET /items/:id/preview
+  # Shows the item view with add to cart functionality
+  def preview 
+    @item = Item.find(params[:id])
+    render layout: 'third_party'
+  end
+
   # GET /items/store
   def store
     @items = Item.all

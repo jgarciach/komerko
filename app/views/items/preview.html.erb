@@ -1,0 +1,12 @@
+<img src="http://placehold.it/300">
+<h1 class="item-preview-name"><%= @item.name %></h1>
+<span class="item-preview-price">$<%= @item.price %></span>
+<%= form_for :cart_item do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <div class="control-group">
+        <div class="controls">
+            <%= f.number_field :quantity, value: "1" , class: 'input-mini quantity' %>
+        </div>
+    </div>
+    <button class="btn btn-success" type="submit">Add to Cart</button>
+<% end %>
