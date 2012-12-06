@@ -9,10 +9,7 @@
                 <h3 class="item-name">
                     <%= link_to item.name, preview_item_path(item) %>
                 </h3>
-                <span class="item-price">$<%= item.price %></span>
-                <div class="item-content">
-                    <p class="item-description"><%= item.description %></p>
-                </div> 
+                <span class="item-price">$<%= item.price %></span> 
             </div>
         <% end %>
     </div>

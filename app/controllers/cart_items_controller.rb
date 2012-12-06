@@ -2,17 +2,18 @@ class CartItemsController < ApplicationController
   # POST /cart_items
   # POST /cart_items.json
   def create
+    #Need to select user's cart; for now, select default cart
+    params[:cart_item][:cart_id] = Cart.first.id
     @cart_item = CartItem.new(params[:cart_item])
-
-    respond_to do |format|
-      if @cart_item.save
-        format.html { redirect_to @cart_item, notice: 'Cart item was successfully created.' }
-        format.json { render json: @cart_item, status: :created, location: @cart_item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @cart_item.errors, status: :unprocessable_entity }
-      end
+    
+    if @cart_item.save
+        @notification = {notice: "Item added succesfully"} 
+    else
+        @notification = {alert: "Item could not be added"}
     end
+
+    redirect_to "/items/store", @notification
+      
   end
 
   # PUT /cart_items/1
