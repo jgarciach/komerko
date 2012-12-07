@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :order_type %><br />
-    <%= f.text_field :order_type %>
+    <%= f.select :order_type ['Pickup', 'Delivery']%>
   </div>
   <div class="actions">
     <%= f.submit %>
