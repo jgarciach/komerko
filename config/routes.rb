@@ -1,5 +1,5 @@
 Komerko::Application.routes.draw do
-  resources :order_items
+  resources :order_items, only: [:create, :update, :destroy]
 
   resources :orders
 
