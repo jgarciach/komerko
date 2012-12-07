@@ -13,12 +13,10 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id]) 
+    @order_items = @order.order_items
+    render layout: 'third_party'
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @order }
-    end
   end
 
   # GET /orders/new
