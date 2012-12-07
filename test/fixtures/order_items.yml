@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item_id: 
+  order_id: 
+  quantity: 1
+  price_paid_per_unit: 9.99
+
+two:
+  item_id: 
+  order_id: 
+  quantity: 1
+  price_paid_per_unit: 9.99
