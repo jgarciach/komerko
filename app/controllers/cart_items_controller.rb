@@ -23,10 +23,10 @@ class CartItemsController < ApplicationController
 
     respond_to do |format|
       if @cart_item.update_attributes(params[:cart_item])
-        format.html { redirect_to @cart_item, notice: 'Cart item was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Quantity was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :back, alert: 'Error, quanity was not updated.' }
         format.json { render json: @cart_item.errors, status: :unprocessable_entity }
       end
     end
