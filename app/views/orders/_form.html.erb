@@ -15,8 +15,8 @@
     <%= f.label :order_type %><br />
     <%= f.text_field :order_type %>
   </div>
-  <%= f.fields_for :users do |u| %>
-
+  <%= fields_for @user do |u| %>
+    <%= devise_error_messages! %>
     <div><%= u.label :first_name %><br />
     <%= u.text_field :first_name %></div>
 

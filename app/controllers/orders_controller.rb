@@ -16,14 +16,14 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id]) 
     @order_items = @order.order_items
     render layout: 'third_party'
-
   end
 
   # GET /orders/new
   # GET /orders/new.json
   def new
     @order = Order.new
-    @cart = Cart.find(get_cart_id) #quitar eventualmente
+    @user = User.new
+    @cart = Cart.find(get_cart_id) 
     @cart_items = @cart.cart_items
 
     respond_to do |format|
@@ -40,19 +40,22 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    #Assign user params to order 
+    params[:order][:email] = params[:user][:email]
+    params[:order][:last_name] = params[:user][:last_name]
+        
     @order = Order.new(params[:order])
-    @cart = Cart.find(params[:cart_id]) #quitar eventualmente
-    @cart_items = @cart.cart_items
-    @order_items = OrderItem.create_order_items(@order.id, @cart_items)
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    
+    @user = User.new(params[:user])
+    
+    if !@user.save
+      redirect_to :back 
+    elsif @order.save
+      @cart = Cart.find(get_cart_id)
+      @order_items = OrderItem.create_order_items(@order.id, @cart.cart_items)
+      redirect_to @order
+    else
+      render action: "new"
     end
   end
 

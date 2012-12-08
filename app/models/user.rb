@@ -17,5 +17,4 @@ class User < ActiveRecord::Base
   def create_cart
     self.cart = Cart.new 
   end
-
 end

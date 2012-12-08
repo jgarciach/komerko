@@ -1,6 +1,6 @@
 <h2>
   Order #<%= @order.id%>
-  <small>Placed <%= @oder.created_at %></small>
+  <small>Placed <%= @order.created_at %></small>
 </h2>
 <table class="table table-striped">
   <thead>
@@ -26,4 +26,4 @@
   <b>Order type:</b>
   <%= @order.order_type %>
 </p>
-<%= link_to 'Back to Store', items_store_path %>
+<%= link_to 'Back to Store', store_items_path %>
