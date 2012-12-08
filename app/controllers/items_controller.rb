@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   # GET /items/store
   def store
     @items = Item.all
-    #@cart = current_user.cart
+    @cart_id = get_cart_id
     render layout: 'third_party'
   end
 

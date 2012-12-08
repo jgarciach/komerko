@@ -9,10 +9,10 @@
                 <h3 class="item-name">
                     <%= link_to item.name, preview_item_path(item) %>
                 </h3>
-                <span class="item-price">$<%= item.price %></span> 
+                <span class="item-price">$<%= item.price %></span>
             </div>
         <% end %>
     </div>
 </div>
 <%= stylesheet_link_tag '/assets/store.css' %>
-<% if @cart != nil %><%= link_to "Go to Cart", cart_path(@cart) %><% end %>
+<%= link_to "Go to Cart", cart_path(@cart_id) %>
