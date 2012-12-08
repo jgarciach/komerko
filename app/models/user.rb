@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name
 
-  has_many :carts
+  has_one :cart
 
   def create_cart
-    self.carts << Cart.new 
+    self.cart = Cart.new 
   end
 
 end
