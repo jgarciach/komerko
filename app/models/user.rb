@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :create_cart 
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -10,4 +12,9 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name
 
   has_many :carts
+
+  def create_cart
+    self.cart = Cart.new 
+  end
+
 end
