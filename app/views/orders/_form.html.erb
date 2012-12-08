@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :order_type %><br />
-    <%= f.text_field :order_type %>
+    <%= f.label :order_type %>
+    <%= f.radio_button :order_type, 'pickup', checked: true %>
+    <%= label :order_order_type, 'pickup' %>
+    <%= f.radio_button :order_type, 'delivery' %>
+    <%= label :order_order_type, 'delivery' %>
   </div>
   <%= fields_for @user do |u| %>
     <%= devise_error_messages! %>
