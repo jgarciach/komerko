@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :carts
 
   def create_cart
-    self.cart = Cart.new 
+    self.carts << Cart.new 
   end
 
 end
