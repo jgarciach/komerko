@@ -13,8 +13,30 @@
 
   <div class="field">
     <%= f.label :order_type %><br />
-    <%= f.select :order_type ['Pickup', 'Delivery']%>
+    <%= f.text_field :order_type %>
   </div>
+  <%= f.fields_for :users do |u| %>
+
+    <div><%= u.label :first_name %><br />
+    <%= u.text_field :first_name %></div>
+
+    <div><%= u.label :last_name %><br />
+    <%= u.text_field :last_name %></div>
+
+    <div><%= u.label :email %><br />
+    <%= u.email_field :email %></div>
+
+    <div><%=u.label :guest? %><br />
+    <%= u.check_box :guest? %></div>
+
+    <div><%= u.label :password %><br />
+    <%= u.password_field :password %></div>
+
+    <div><%= u.label :password_confirmation %><br />
+    <%= u.password_field :password_confirmation %></div> 
+
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

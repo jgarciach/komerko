@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   # GET /orders/new.json
   def new
     @order = Order.new
-    @cart = Cart.find(params[:cart_id]) #quitar eventualmente
+    @cart = Cart.find(get_cart_id) #quitar eventualmente
     @cart_items = @cart.cart_items
 
     respond_to do |format|
