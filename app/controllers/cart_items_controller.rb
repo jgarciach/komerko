@@ -2,8 +2,8 @@ class CartItemsController < ApplicationController
   # POST /cart_items
   # POST /cart_items.json
   def create
-    #Need to select user's cart; for now, select default cart
-    params[:cart_item][:cart_id] = Cart.first.id
+    #Need to select the correct cart depending on business; for now, user only has one cart
+    params[:cart_item][:cart_id] = current_user.cart.id
     @cart_item = CartItem.new(params[:cart_item])
     
     if @cart_item.save
