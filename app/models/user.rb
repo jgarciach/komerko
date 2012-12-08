@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name
 
   has_one :cart
+  has_many :orders
 
   def create_cart
     self.cart = Cart.new 
