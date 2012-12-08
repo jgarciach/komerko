@@ -54,6 +54,7 @@ class OrdersController < ApplicationController
     
     if (!@user or @user.save) and @order.save
         @order_items = @order.transfer_cart_items(Cart.find(get_cart_id).cart_items)
+        @order.assign_user(@user.id) if @user
         redirect_to @order
     else
         #Send back to form with errors

@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   
   has_many :order_items
   has_many :items, through: :order_items
-
+ 
   def transfer_cart_items(cart_items)
       #Converts cart items into order items
       cart_items.each do |cart_item|
@@ -16,4 +16,34 @@ class Order < ActiveRecord::Base
       end
   end
 
+  def assign_user(uid)
+    #Replaces contact fields and sets user reference
+    self.user_id = uid
+    update_attributes(email: nil, first_name: nil, last_name: nil)
+  end
+  
+  #Attribute delegation to user 
+  def first_name
+    if user
+        user.first_name
+    else
+        read_attribute(:first_name)
+    end
+  end
+  
+  def last_name
+    if user
+        user.last_name
+    else
+        read_attribute(:last_name)
+    end
+  end
+
+  def email 
+    if user
+        user.email
+    else
+        read_attribute(:email)
+    end
+  end
 end

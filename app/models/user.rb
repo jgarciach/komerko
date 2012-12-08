@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  after_create :create_cart 
-  
+  after_create :create_cart, :associate_orders_with_user
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -15,6 +15,13 @@ class User < ActiveRecord::Base
   has_many :orders
 
   def create_cart
-    self.cart = Cart.new 
+    self.cart = Cart.create 
+  end
+
+  def associate_orders_with_user
+    #Sets user_id on orders with email == user.email
+    Order.where("email = ?", email).each do |order|
+        order.assign_user(id) 
+    end
   end
 end
