@@ -26,8 +26,8 @@
     <div><%= u.label :email %><br />
     <%= u.email_field :email %></div>
 
-    <div><%=u.label :guest? %><br />
-    <%= u.check_box :guest? %></div>
+    <div><%= label "Registrarme", :create_account? %><br />
+    <%= check_box_tag "user", :create_account? %></div>
 
     <div><%= u.label :password %><br />
     <%= u.password_field :password %></div>
