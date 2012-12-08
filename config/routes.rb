@@ -1,5 +1,7 @@
 Komerko::Application.routes.draw do
 
+  devise_for :users
+
   resources :orders
 
   resources :cart_items, only: [:create, :update, :destroy]
