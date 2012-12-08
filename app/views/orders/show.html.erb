@@ -2,6 +2,12 @@
   Order #<%= @order.id%>
   <small>Placed <%= @order.created_at %></small>
 </h2>
+<dl class="user-info">
+    <dt>Customer:</dt>
+    <dd><%= @order.first_name + " " + @order.last_name %></dd>
+    <dt>Contact:</dt>
+    <dd><%= @order.email %></dd>
+</dl>
 <table class="table table-striped">
   <thead>
     <tr>

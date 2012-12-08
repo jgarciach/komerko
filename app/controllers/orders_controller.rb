@@ -47,18 +47,17 @@ class OrdersController < ApplicationController
         
     @order = Order.new(params[:order])
    
-    if params[:create_account?] == 1
+    if params[:create_account?] == "1"
         #If user marked he wants to create an account
         @user = User.new(params[:user])
     end
     
     if (!@user or @user.save) and @order.save
-        @cart = Cart.find(get_cart_id)
-        @order_items = OrderItem.create_order_items(@order.id, @cart.cart_items)
+        @order_items = @order.transfer_cart_items(Cart.find(get_cart_id).cart_items)
         redirect_to @order
     else
         #Send back to form with errors
-        render action: "new"
+        render action: "edit"
     end
   end
 

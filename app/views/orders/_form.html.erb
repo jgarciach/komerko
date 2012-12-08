@@ -19,8 +19,17 @@
     <%= label :order_order_type, 'delivery' %>
   </div>
   <%= fields_for @user do |u| %>
-    <%= devise_error_messages! %>
-    <div><%= u.label :first_name %><br />
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %><div><%= u.label :first_name %><br />
     <%= u.text_field :first_name %></div>
 
     <div><%= u.label :last_name %><br />
@@ -29,8 +38,8 @@
     <div><%= u.label :email %><br />
     <%= u.email_field :email %></div>
 
-    <div><%= label "Registrarme", :create_account? %><br />
-    <%= check_box_tag "user", :create_account? %></div>
+    <div><%= label_tag :create_account?, "Create account (only need a password!)" %><br />
+    <%= check_box_tag "create_account?", "1" %></div>
 
     <div><%= u.label :password %><br />
     <%= u.password_field :password %></div>
