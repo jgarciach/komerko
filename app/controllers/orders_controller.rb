@@ -42,20 +42,23 @@ class OrdersController < ApplicationController
   def create
     #Assign user params to order 
     params[:order][:email] = params[:user][:email]
+    params[:order][:first_name] = params[:user][:first_name]
     params[:order][:last_name] = params[:user][:last_name]
         
     @order = Order.new(params[:order])
+   
+    if params[:create_account?] == 1
+        #If user marked he wants to create an account
+        @user = User.new(params[:user])
+    end
     
-    @user = User.new(params[:user])
-    
-    if !@user.save
-      redirect_to :back 
-    elsif @order.save
-      @cart = Cart.find(get_cart_id)
-      @order_items = OrderItem.create_order_items(@order.id, @cart.cart_items)
-      redirect_to @order
+    if (!@user or @user.save) and @order.save
+        @cart = Cart.find(get_cart_id)
+        @order_items = OrderItem.create_order_items(@order.id, @cart.cart_items)
+        redirect_to @order
     else
-      render action: "new"
+        #Send back to form with errors
+        render action: "new"
     end
   end
 
