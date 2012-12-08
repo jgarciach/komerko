@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
   # POST /cart_items.json
   def create
     #Need to select the correct cart depending on business; for now, user only has one cart
-    params[:cart_item][:cart_id] = current_user.cart.id
+    params[:cart_item][:cart_id] = get_cart_id
     @cart_item = CartItem.new(params[:cart_item])
     
     if @cart_item.save
@@ -43,4 +43,5 @@ class CartItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
