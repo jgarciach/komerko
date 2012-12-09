@@ -6,12 +6,18 @@
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
         <script type="text/javascript">
-            fr = $(parent.document).find("#ubiqua-store");
-            fr.height(150);
+            $(document).bind('sizeChange', resizeIframe);
+
+            ubiquafr = $(parent.document).find("#ubiqua-store");
+            ubiquafr.height(150);
+            
+            function resizeIframe () {
+              ubiquafr.height(ubiquafr.contents().height());
+            }
+
             $(function () { 
-                fr.height(fr.contents().height());
-                console.log(fr.height());
-            });
+              resizeIframe(ubiquafr);  
+            }); 
         </script> 
     </head>
     <body>
