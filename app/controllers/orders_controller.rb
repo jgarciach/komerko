@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @user = User.new
+    @address = Address.new
     @cart = Cart.find(get_cart_id) 
     @cart_items = @cart.cart_items
 
@@ -46,15 +47,18 @@ class OrdersController < ApplicationController
     params[:order][:last_name] = params[:user][:last_name]
         
     @order = Order.new(params[:order])
-   
+  
+    @address = Address.new(params[:address])    
+
     if params[:create_account?] == "1"
         #If user marked he wants to create an account
         @user = User.new(params[:user])
     end
     
-    if (!@user or @user.save) and @order.save
+    if (!@user or @user.save) and @order.save and @address.save
         @order_items = @order.transfer_cart_items(Cart.find(get_cart_id).cart_items)
         @order.assign_user(@user.id) if @user
+        @address.update_attributes(user_id: @user.id) if @user
         redirect_to @order
     else
         #Send back to form with errors

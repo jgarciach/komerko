@@ -20,16 +20,18 @@
   </div>
   <%= fields_for @user do |u| %>
     <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %><div><%= u.label :first_name %><br />
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div><%= u.label :first_name %><br />
     <%= u.text_field :first_name %></div>
 
     <div><%= u.label :last_name %><br />
@@ -46,6 +48,25 @@
 
     <div><%= u.label :password_confirmation %><br />
     <%= u.password_field :password_confirmation %></div> 
+
+  <% end %>
+  <%= fields_for @address do |a| %>
+   
+    <div><%= a.label :name %><br />
+    <%= a.text_field :name %></div>
+ 
+    <div><%= a.label :phone %><br />
+    <%= a.telephone_field :phone %></div>
+
+    <div><%= a.label :line1, "Address" %><br />
+    <%= a.text_field :line1 %>
+    <%= a.text_field :line2 %></div>
+
+    <div><%= a.label :city %><br />
+    <%= a.text_field :city %></div>
+
+    <div><%= a.label :state %><br />
+    <%= a.text_field :state %></div>
 
   <% end %>
 
