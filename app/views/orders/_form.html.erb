@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="order-type-field field">
     <%= f.label :order_type %>
     <%= f.radio_button :order_type, 'pickup', checked: true %>
     <%= label :order_order_type, 'pickup' %>
@@ -50,22 +50,23 @@
     <%= u.password_field :password_confirmation %></div> 
 
   <% end %>
+
   <%= fields_for @address do |a| %>
    
-    <div><%= a.label :name %><br />
+    <div class="address-field"><%= a.label :name %><br />
     <%= a.text_field :name %></div>
  
-    <div><%= a.label :phone %><br />
+    <div class="address-field"><%= a.label :phone %><br />
     <%= a.telephone_field :phone %></div>
 
-    <div><%= a.label :line1, "Address" %><br />
+    <div class="address-field"><%= a.label :line1, "Address" %><br />
     <%= a.text_field :line1 %>
     <%= a.text_field :line2 %></div>
 
-    <div><%= a.label :city %><br />
+    <div class="address-field"><%= a.label :city %><br />
     <%= a.text_field :city %></div>
 
-    <div><%= a.label :state %><br />
+    <div class="address-field"><%= a.label :state %><br />
     <%= a.text_field :state %></div>
 
   <% end %>

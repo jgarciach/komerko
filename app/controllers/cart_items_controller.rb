@@ -37,9 +37,10 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    @cart_id = @cart_item.cart_id
 
     respond_to do |format|
-      format.html { redirect_to cart_items_url }
+      format.html { redirect_to cart_path(@cart_id) }
       format.json { head :no_content }
     end
   end
