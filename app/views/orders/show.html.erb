@@ -2,12 +2,30 @@
   Order #<%= @order.id%>
   <small>Placed <%= @order.created_at %></small>
 </h2>
+
 <dl class="user-info">
     <dt>Customer:</dt>
     <dd><%= @order.first_name + " " + @order.last_name %></dd>
     <dt>Contact:</dt>
     <dd><%= @order.email %></dd>
 </dl>
+
+<p>
+  <b>Order type:</b>
+  <%= @order.order_type %>
+</p>
+
+<% if @order.order_type == "delivery" %>
+  <b>Direccion:</b>
+  <address>
+    <%= @address.name %><br>
+    <%= @address.line1 %><br>
+    <%= @address.line2 %><br>
+    <%= @address.city%>, <%= @address.state %><br>
+    <abbr title="Phone">P:</abbr> <%= @address.phone %>
+  </address>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -28,8 +46,4 @@
   </tbody>
 </table>
 
-<p>
-  <b>Order type:</b>
-  <%= @order.order_type %>
-</p>
 <%= link_to 'Back to Store', store_items_path %>

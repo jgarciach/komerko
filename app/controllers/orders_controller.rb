@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id]) 
     @order_items = @order.order_items
+    @address = @order.address
     render layout: 'third_party'
   end
 
