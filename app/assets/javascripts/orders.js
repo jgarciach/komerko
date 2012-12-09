@@ -10,6 +10,11 @@ function toggleAddressFields () {
     $(".address-field").show();
   }
 }
+
+function togglePasswordFields() {
+  $(".password-field-container").toggle();
+}
+
 $(function() {
   toggleAddressFields();
   $("#order_order_type_delivery").click(function() {
@@ -17,5 +22,10 @@ $(function() {
   });
   $("#order_order_type_pickup").click(function() {
     toggleAddressFields();
+  });
+  console.log("pwd");
+  togglePasswordFields();
+  $("#create_account_").click(function () {
+    togglePasswordFields();
   });
 });
