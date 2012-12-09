@@ -59,6 +59,7 @@ class OrdersController < ApplicationController
         @order_items = @order.transfer_cart_items(Cart.find(get_cart_id).cart_items)
         @order.assign_user(@user.id) if @user
         @address.update_attributes(user_id: @user.id) if @user
+        @order.update_attributes(address_id: @address.id)
         redirect_to @order
     else
         #Send back to form with errors
