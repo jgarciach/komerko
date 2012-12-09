@@ -30,8 +30,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Price</th>
       <th>Quantity</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
@@ -39,11 +39,19 @@
       <% item = order_item.item %>
       <tr>
         <td><%= link_to item.name, item_path(item) %></td>
-        <td><%= order_item.price_paid_per_unit %></td>
         <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.price_paid_per_unit) %></td>
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td>Total</td>
+      <td><%= number_to_currency(@order.total) %></td>
+    </tr>
+  </tfoot>
+
 </table>
 
 <%= link_to 'Back to Store', store_items_path %>
