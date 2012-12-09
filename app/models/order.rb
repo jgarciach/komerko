@@ -5,7 +5,8 @@ class Order < ActiveRecord::Base
   
   has_many :order_items
   has_many :items, through: :order_items
- 
+  belongs_to :address 
+
   def transfer_cart_items(cart_items)
       #Converts cart items into order items
       cart_items.each do |cart_item|

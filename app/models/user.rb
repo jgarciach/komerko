@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_one :cart
   has_many :orders
+  has_many :addresses
 
   def create_cart
     self.cart = Cart.create 
