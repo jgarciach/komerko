@@ -5,6 +5,20 @@
         <%= stylesheet_link_tag    "application", :media => "all" %>
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
+        <script type="text/javascript">
+            $(document).bind('sizeChange', resizeIframe);
+
+            ubiquafr = $(parent.document).find("#ubiqua-store");
+            ubiquafr.height(150);
+            
+            function resizeIframe () {
+              ubiquafr.height(ubiquafr.contents().height());
+            }
+
+            $(function () { 
+              resizeIframe(ubiquafr);  
+            }); 
+        </script> 
     </head>
     <body>
         <div class="container">
@@ -15,7 +29,7 @@
                 </div>
             <% end %>
         </div>
-        <div class="container"><%= yield %></div>    
+        <div class="container content"><%= yield %></div>    
         <%= link_to 'Sign_Out', destroy_user_session_path, method: :delete %>
     </body>
 </html>

@@ -9,7 +9,14 @@ function toggleAddressFields () {
   else if ($("#order_order_type_delivery").is(':checked')) {
     $(".address-field").show();
   }
+  $(document).trigger('sizeChange');
 }
+
+function togglePasswordFields() {
+  $(".password-field-container").toggle();
+  $(document).trigger('sizeChange');
+}
+
 $(function() {
   toggleAddressFields();
   $("#order_order_type_delivery").click(function() {
@@ -17,5 +24,10 @@ $(function() {
   });
   $("#order_order_type_pickup").click(function() {
     toggleAddressFields();
+  });
+  
+  togglePasswordFields();
+  $("#create_account_").click(function () {
+    togglePasswordFields();
   });
 });

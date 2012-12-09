@@ -40,13 +40,17 @@
     <div><%= u.label :email %><br />
     <%= u.email_field :email %></div>
 
-    <div><%= label_tag :create_account?, "Create account (only need a password!)" %><br />
-    <%= check_box_tag "create_account?", "1" %></div>
+    <div>
+        <label for="create_account_" class="checkbox">
+            <%= check_box_tag "create_account?", "1" %>
+            Create account (only need a password!)
+        </label>
+    </div>
 
-    <div><%= u.label :password %><br />
+    <div class="password-field-container"><%= u.label :password %><br />
     <%= u.password_field :password %></div>
 
-    <div><%= u.label :password_confirmation %><br />
+    <div class="password-field-container"><%= u.label :password_confirmation %><br />
     <%= u.password_field :password_confirmation %></div> 
 
   <% end %>
