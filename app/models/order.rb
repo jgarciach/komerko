@@ -17,6 +17,14 @@ class Order < ActiveRecord::Base
       end
   end
 
+  def total
+    total = 0
+    self.order_items.each do |item|
+      total = total + (item.price_paid_per_unit*item.quantity)
+    end
+    total
+  end
+
   def assign_user(uid)
     #Replaces contact fields and sets user reference
     self.user_id = uid
