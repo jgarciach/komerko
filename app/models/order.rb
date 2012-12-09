@@ -1,11 +1,11 @@
 class Order < ActiveRecord::Base
-  attr_accessible :order_type, :guest, :email, :first_name, :last_name
+  attr_accessible :order_type, :guest, :email, :first_name, :last_name, :user_id, :address_id
 
   belongs_to :user
+  belongs_to :address 
   
   has_many :order_items
   has_many :items, through: :order_items
-  belongs_to :address 
 
   def transfer_cart_items(cart_items)
       #Converts cart items into order items
