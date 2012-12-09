@@ -5,6 +5,14 @@
         <%= stylesheet_link_tag    "application", :media => "all" %>
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
+        <script type="text/javascript">
+            fr = $(parent.document).find("#ubiqua-store");
+            fr.height(150);
+            $(function () { 
+                fr.height(fr.contents().height());
+                console.log(fr.height());
+            });
+        </script> 
     </head>
     <body>
         <div class="container">
@@ -15,7 +23,7 @@
                 </div>
             <% end %>
         </div>
-        <div class="container"><%= yield %></div>    
+        <div class="container content"><%= yield %></div>    
         <%= link_to 'Sign_Out', destroy_user_session_path, method: :delete %>
     </body>
 </html>
