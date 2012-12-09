@@ -26,11 +26,7 @@ class OrdersController < ApplicationController
     @address = Address.new
     @cart = Cart.find(get_cart_id) 
     @cart_items = @cart.cart_items
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @order }
-    end
+    render layout: 'third_party'
   end
 
   # GET /orders/1/edit
