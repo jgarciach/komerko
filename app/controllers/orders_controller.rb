@@ -22,10 +22,11 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
-    @order = Order.new
+    @order = Order.new(business_id: params[:business_id])
     @user = User.new
+    @business = Business.find(params[:business_id])
     @address = Address.new
-    @cart = Cart.find(get_cart_id) 
+    @cart = Cart.find(get_cart_id(params[:business_id])) 
     @cart_items = @cart.cart_items
     render layout: 'third_party'
   end
@@ -45,6 +46,7 @@ class OrdersController < ApplicationController
         
     @order = Order.new(params[:order])
   
+    @business = Business.find(params[:business_id])
     @address = Address.new(params[:address])    
 
     if params[:create_account?] == "1"
@@ -53,9 +55,11 @@ class OrdersController < ApplicationController
     end
     
     if (!@user or @user.save) and @order.save and @address.save
-        @order_items = @order.transfer_cart_items(Cart.find(get_cart_id).cart_items)
-        @order.assign_user(@user.id) if @user
-        @address.update_attributes(user_id: @user.id) if @user
+        @order_items = @order.transfer_cart_items(Cart.find(get_cart_id(@order.business_id)).cart_items)
+      if @user
+          @order.assign_user(@user.id) 
+          @address.update_attributes(user_id: @user.id) 
+      end
         @order.update_attributes(address_id: @address.id)
         redirect_to @order
     else

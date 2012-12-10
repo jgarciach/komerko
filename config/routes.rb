@@ -1,14 +1,15 @@
 Komerko::Application.routes.draw do
 
   resources :businesses do
+    resources :orders
     member do
       get 'store'
     end
   end
 
+  match 'businesses/:business_id/checkout' => 'orders#new', as: 'checkout'
+  
   devise_for :users
-
-  resources :orders
 
   resources :cart_items, only: [:create, :update, :destroy]
 
@@ -19,8 +20,6 @@ Komerko::Application.routes.draw do
       get 'preview'
     end
   end
-
-  match '/checkout' => 'orders#new', as: 'checkout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

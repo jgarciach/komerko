@@ -3,7 +3,8 @@ class CartItemsController < ApplicationController
   # POST /cart_items.json
   def create
     #Need to select the correct cart depending on business; for now, user only has one cart
-    params[:cart_item][:cart_id] = get_cart_id
+    @item = Item.find(params[:cart_item][:item_id])
+    params[:cart_item][:cart_id] = get_cart_id(@item.business_id)
     @cart_item = CartItem.new(params[:cart_item])
     
     if @cart_item.save
@@ -12,7 +13,7 @@ class CartItemsController < ApplicationController
         @notification = {alert: "Item could not be added"}
     end
 
-    redirect_to "/items/store", @notification
+    redirect_to store_business_path(@item.business_id), @notification
       
   end
 

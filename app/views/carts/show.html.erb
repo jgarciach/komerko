@@ -42,5 +42,5 @@
 </table>
 
 
-<%= link_to 'Back to Store', store_items_path %>
-<%= link_to 'Checkout', new_order_path %>
+<%= link_to 'Back to Store', store_business_path(@cart.business_id) %>
+<%= link_to 'Checkout', checkout_path({business_id: @cart.business_id}) %>

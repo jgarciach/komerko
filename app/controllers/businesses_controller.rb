@@ -3,7 +3,7 @@ class BusinessesController < ApplicationController
   def store
     @business = Business.find(params[:id])
     @items = @business.items
-    @cart_id = get_cart_id
+    @cart_id = get_cart_id(@business.id)
     render layout: 'third_party'
   end
 
