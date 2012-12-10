@@ -1,15 +1,23 @@
-<img src="http://placehold.it/300">
-<h1 class="item-preview-name"><%= @item.name %></h1>
-<span class="item-preview-price">$<%= @item.price %></span>
-<div class="item-content">
-    <p class="item-description"><%= @item.description %></p>
+<div class="row-fluid">
+  <ul class="thumbnails">
+    <li class="span4">
+      <img src="http://placehold.it/300x300">
+    </li>
+    <li class="span8">
+      <div>
+        <h1 class="item-preview-name"><%= @item.name %></h1>
+        <h2><small class="item-preview-price"><%= number_to_currency(@item.price) %></small></h2>
+        <p class="item-description"><%= @item.description %></p>
+        <%= form_for :cart_item, url: cart_items_path do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <div class="control-group">
+            <div class="controls">
+              <%= f.number_field :quantity, value: "1" , class: 'input-mini quantity' %>
+            </div>
+          </div>
+          <button class="btn btn-success" type="submit">Add to Cart</button>
+        <% end %>
+      </div>
+    </li>
+  </ul>
 </div>
-<%= form_for :cart_item, url: cart_items_path do |f| %>
-    <%= f.hidden_field :item_id, value: @item.id %>
-    <div class="control-group">
-        <div class="controls">
-            <%= f.number_field :quantity, value: "1" , class: 'input-mini quantity' %>
-        </div>
-    </div>
-    <button class="btn btn-success" type="submit">Add to Cart</button>
-<% end %>
