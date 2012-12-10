@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :guest
 
-  has_one :cart
+  has_many :cart
   has_many :orders
   has_many :addresses
 
