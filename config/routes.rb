@@ -9,7 +9,7 @@ Komerko::Application.routes.draw do
 
   match 'businesses/:business_id/checkout' => 'orders#new', as: 'checkout'
   
-  devise_for :users
+  devise_for :users, controllers: {sessions: 'sessions'}
 
   resources :cart_items, only: [:create, :update, :destroy]
 

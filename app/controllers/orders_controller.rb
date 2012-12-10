@@ -19,8 +19,7 @@ class OrdersController < ApplicationController
     render layout: 'third_party'
   end
 
-  # GET /orders/new
-  # GET /orders/new.json
+  # GET businesses/:business_id/orders/new
   def new
     @order = Order.new(business_id: params[:business_id])
     @user = User.new
