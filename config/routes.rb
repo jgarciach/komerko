@@ -17,6 +17,8 @@ Komerko::Application.routes.draw do
     end
   end
 
+  match '/checkout' => 'orders#new', as: 'checkout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
