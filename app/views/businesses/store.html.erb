@@ -1,3 +1,7 @@
+<% content_for :css do %> 
+  <%= stylesheet_link_tag 'store' %>
+<% end %>
+
 <div class="row-fluid section">
   <ul class="thumbnails items">
     <% @items.each do |item| %>
@@ -17,5 +21,4 @@
     <% end %>
   </ul>
 </div>
-<%= stylesheet_link_tag '/assets/store.css' %>
 <%= link_to "Go to Cart", cart_path(@cart_id) %>

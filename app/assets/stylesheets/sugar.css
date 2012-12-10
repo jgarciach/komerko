@@ -1,0 +1,58 @@
+html {
+    min-height: 100%;
+}
+
+body {
+  background-color: #F1F1F1;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EFEFEF), to(#e2e2e2));
+  background: -moz-gradient(linear, 0% 0%, 0% 100%, from(#EFEFEF), to(#e2e2e2));
+  background: -o-gradient(linear, 0% 0%, 0% 100%, from(#EFEFEF), to(#e2e2e2));
+}
+
+.noise::before {
+  background-image: url(noise.png);
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+#project_header {
+  max-width: 1170px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+#project_header hr {
+  border-top: 2px solid #D8D8D8;
+  border-bottom: 1px solid #FAFAFA;
+
+}
+
+#project_name h1{
+  font-family: 'Ubuntu', sans-serif;
+  color: #F16B23;
+  display: inline-block;
+  font-size: 52px;
+  font-weight: normal;
+  margin-left: 18px;
+  text-shadow: 0 1px 0 white;
+  transition: color 150ms ease;
+  -webkit-transition: color 150ms ease;
+  -moz-transition: color 150ms ease;
+  -o-transition: color 150ms ease;
+}
+
+#wrapper {
+  background-color: #fff;
+  border: 2px #fff solid;
+  border-radius: 10px;
+  padding: 10px;
+  -moz-box-shadow:    0 1px 3px #BBB;
+  -webkit-box-shadow: 0 1px 3px #BBB;
+  box-shadow:         0 1px 3px #BBB;
+}
