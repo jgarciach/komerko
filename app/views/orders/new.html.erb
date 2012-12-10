@@ -1,4 +1,4 @@
-<h1>New order</h1>
+<h1>Checkout</h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -30,6 +30,13 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td></td><td></td>
+      <td>Total</td>
+      <td><%= number_to_currency(@cart.total) %></td>
+    </tr>
+  </tfoot>
 </table>
 
 <%= render 'form' %>

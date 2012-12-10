@@ -12,7 +12,7 @@
       <% item = cart_item.item %>
       <tr>
         <td><%= link_to item.name, item_path(item) %></td>
-        <td><%= item.price %></td>
+        <td><%= number_to_currency(item.price) %></td>
         <td>
           <%= form_for(cart_item) do |f| %>
             <%= f.number_field :quantity, class: "input-mini item-quantity" %>
@@ -32,6 +32,13 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td></td><td></td>
+      <td>Total</td>
+      <td><%= number_to_currency(@cart.total) %></td>
+    </tr>
+  </tfoot>
 </table>
 
 

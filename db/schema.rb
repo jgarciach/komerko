@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209001258) do
+ActiveRecord::Schema.define(:version => 20121210002519) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20121209001258) do
     t.integer  "user_id"
   end
 
+  create_table "businesses", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id"
     t.integer  "item_id"
@@ -38,9 +46,10 @@ ActiveRecord::Schema.define(:version => 20121209001258) do
   add_index "cart_items", ["item_id"], :name => "index_cart_items_on_item_id"
 
   create_table "carts", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+    t.integer  "business_id"
   end
 
   create_table "items", :force => true do |t|
@@ -49,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20121209001258) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "description"
+    t.integer  "business_id"
   end
 
   create_table "order_items", :force => true do |t|
@@ -62,13 +72,14 @@ ActiveRecord::Schema.define(:version => 20121209001258) do
 
   create_table "orders", :force => true do |t|
     t.string   "order_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "address_id"
+    t.integer  "business_id"
   end
 
   create_table "users", :force => true do |t|

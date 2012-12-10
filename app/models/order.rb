@@ -1,9 +1,10 @@
 class Order < ActiveRecord::Base
-  attr_accessible :order_type, :guest, :email, :first_name, :last_name, :user_id, :address_id
+  attr_accessible :order_type, :guest, :email, :first_name, :last_name, :user_id, :address_id, :business_id
 
   belongs_to :user
   belongs_to :address 
-  
+  belongs_to :business  
+
   has_many :order_items
   has_many :items, through: :order_items
 
@@ -15,6 +16,14 @@ class Order < ActiveRecord::Base
           #Item no longer in cart after "transfer"
           cart_item.destroy
       end
+  end
+
+  def total
+    total = 0
+    self.order_items.each do |item|
+      total = total + (item.price_paid_per_unit*item.quantity)
+    end
+    total
   end
 
   def assign_user(uid)

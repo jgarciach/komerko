@@ -2,18 +2,36 @@
   Order #<%= @order.id%>
   <small>Placed <%= @order.created_at %></small>
 </h2>
+
 <dl class="user-info">
     <dt>Customer:</dt>
     <dd><%= @order.first_name + " " + @order.last_name %></dd>
     <dt>Contact:</dt>
     <dd><%= @order.email %></dd>
 </dl>
+
+<p>
+  <b>Order type:</b>
+  <%= @order.order_type %>
+</p>
+
+<% if @order.order_type == "delivery" %>
+  <b>Direccion:</b>
+  <address>
+    <%= @address.name %><br>
+    <%= @address.line1 %><br>
+    <%= @address.line2 %><br>
+    <%= @address.city%>, <%= @address.state %><br>
+    <abbr title="Phone">P:</abbr> <%= @address.phone %>
+  </address>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Price</th>
       <th>Quantity</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
@@ -21,15 +39,19 @@
       <% item = order_item.item %>
       <tr>
         <td><%= link_to item.name, item_path(item) %></td>
-        <td><%= order_item.price_paid_per_unit %></td>
         <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.price_paid_per_unit) %></td>
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td>Total</td>
+      <td><%= number_to_currency(@order.total) %></td>
+    </tr>
+  </tfoot>
+
 </table>
 
-<p>
-  <b>Order type:</b>
-  <%= @order.order_type %>
-</p>
 <%= link_to 'Back to Store', store_items_path %>
