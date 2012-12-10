@@ -1,6 +1,10 @@
 Komerko::Application.routes.draw do
 
-  resources :businesses
+  resources :businesses do
+    member do
+      get 'store'
+    end
+  end
 
   devise_for :users
 
@@ -11,9 +15,6 @@ Komerko::Application.routes.draw do
   resources :carts
 
   resources :items do
-    collection do
-      get 'store'
-    end
     member do
       get 'preview'
     end

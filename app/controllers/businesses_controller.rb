@@ -1,4 +1,12 @@
 class BusinessesController < ApplicationController
+  # GET /businesses/1/store
+  def store
+    @business = Business.find(params[:id])
+    @items = @business.items
+    @cart_id = get_cart_id
+    render layout: 'third_party'
+  end
+
   # GET /businesses
   # GET /businesses.json
   def index

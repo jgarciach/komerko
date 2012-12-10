@@ -6,13 +6,6 @@ class ItemsController < ApplicationController
     render layout: 'third_party'
   end
 
-  # GET /items/store
-  def store
-    @items = Item.all
-    @cart_id = get_cart_id
-    render layout: 'third_party'
-  end
-
   # GET /items
   # GET /items.json
   def index
