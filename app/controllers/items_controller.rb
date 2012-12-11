@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # Shows the item view with add to cart functionality
   def preview 
     @item = Item.find(params[:id])
+    @cart_id = get_cart_id(@item.business_id)
     render layout: 'third_party'
   end
 

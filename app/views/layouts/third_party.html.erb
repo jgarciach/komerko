@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Business Name Here - Ubiqua Store</title>
+        <%= stylesheet_link_tag "third_party" %>
         <%= stylesheet_link_tag "bootstrap_and_overrides" %>
         <%= stylesheet_link_tag "scaffolds" %>
 	<%= yield :css %>
@@ -31,7 +32,34 @@
                 </div>
             <% end %>
         </div>
-        <div class="container content"><%= yield %></div>    
-        <%= link_to 'Sign_Out', destroy_user_session_path, method: :delete %>
-    </body>
+      <div class="container content">
+        <div class="row-fluid links-top">
+          <div class="span12">
+          <span><%= yield :top_linkbar %></span>
+          <% if user_signed_in? %>
+              <span class="user-greet user-controls pull-right">Hello, <%= current_user.first_name.titleize %> (<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>)</span>
+          <% else %>
+            <span class="user-controls pull-right">
+              <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>
+            </span>
+          <% end %>
+          </div>
+        </div>
+
+        <%= yield %>    
+
+        <div class="row-fluid links-bottom">
+          <div class="span12">
+            <% if user_signed_in? %>
+              <span class="user-controls"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></span>
+            <% else %>
+              <span class="user-controls">
+                <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>
+              </span>
+            <% end %>      
+            <span class="pull-right"><%= yield :bottom_linkbar %></span>
+          </div>
+        </div>
+    </div>
+  </body>
 </html>

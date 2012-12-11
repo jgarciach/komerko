@@ -44,4 +44,14 @@ class Cart < ActiveRecord::Base
     end
     new_carts_hash
   end
+
+  #Counts number of items in cart
+  def number_of_items
+    items = 0
+    self.cart_items.each do |item|
+      items = items + item.quantity
+    end
+    items
+  end
+  
 end

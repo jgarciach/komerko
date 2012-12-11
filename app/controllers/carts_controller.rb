@@ -15,6 +15,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     @cart_items = @cart.cart_items
+    @number_of_items = @cart.number_of_items
     render layout: 'third_party'
 
   end

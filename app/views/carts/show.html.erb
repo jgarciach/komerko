@@ -1,4 +1,16 @@
+<% content_for :top_linkbar do %> 
+  <%= link_to store_business_path(@cart.business_id), class: 'btn btn-small' do %>
+    <i class="icon-chevron-left"></i> Back to Store
+  <% end %>
+  <%= link_to checkout_path({business_id: @cart.business_id}), class:"btn btn-small btn-primary" do %>
+    Checkout Now <i class="icon-chevron-right"></i>
+  <% end %>
+<% end %>
+<h1><i class="icon-shopping-cart"></i>  My Cart <small><%= @number_of_items %> items</small></h1>
 <%= render "table" %>
 
-<%= link_to 'Back to Store', store_business_path(@cart.business_id) %>
-<%= link_to 'Checkout', checkout_path({business_id: @cart.business_id}) %>
+<% content_for :bottom_linkbar do %>
+  <%= link_to checkout_path({business_id: @cart.business_id}), class:"btn btn-small btn-primary" do %>
+    Checkout Now <i class="icon-chevron-right"></i>
+  <% end %>
+<% end %>

@@ -2,6 +2,15 @@
   <%= stylesheet_link_tag 'store' %>
 <% end %>
 
+<% content_for :top_linkbar do %> 
+  <%= link_to cart_path(@cart_id), class: "btn btn-small" do %>
+    <i class="icon-shopping-cart"></i> My Cart
+  <% end %>
+  <%= link_to checkout_path({business_id: @items.first.business_id}), class: "btn btn-primary btn-small" do %> 
+    Checkout Now <i class="icon-chevron-right"></i>
+  <% end %>
+<% end %>
+
 <div class="row-fluid section">
   <ul class="thumbnails items">
     <% @items.each do |item| %>
@@ -21,4 +30,11 @@
     <% end %>
   </ul>
 </div>
-<%= link_to "Go to Cart", cart_path(@cart_id) %>
+<% content_for :bottom_linkbar do %>
+  <%= link_to cart_path(@cart_id), class: "btn btn-small" do %>
+    <i class="icon-shopping-cart"></i> My Cart
+  <% end %>
+  <%= link_to checkout_path({business_id: @items.first.business_id}), class: "btn btn-primary btn-small" do %> 
+    Checkout Now <i class="icon-chevron-right"></i>
+  <% end %>
+<% end %>
