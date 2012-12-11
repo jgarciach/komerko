@@ -6,7 +6,19 @@
     Checkout Now <i class="icon-chevron-right"></i>
   <% end %>
 <% end %>
-<h1><i class="icon-shopping-cart"></i>  My Cart <small><%= @number_of_items %> items</small></h1>
+
+<h2>
+  <i class="icon-shopping-cart"></i> My Cart 
+  <small>
+    <% if @number_of_items == "empty"%> 
+      empty
+    <% else %>
+      <%= pluralize(@number_of_items, 'item') %>
+    <% end %>
+  </small>
+</h2>
+
+
 <%= render "table" %>
 
 <% content_for :bottom_linkbar do %>

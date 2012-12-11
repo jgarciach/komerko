@@ -3,8 +3,9 @@
 <% end %>
 
 <% content_for :top_linkbar do %> 
-  <%= link_to cart_path(@cart_id), class: "btn btn-small" do %>
-    <i class="icon-shopping-cart"></i> My Cart
+  <%= link_to cart_path(@cart_id), class: "btn btn-small btn-my-cart" do %>
+    <i class="icon-shopping-cart"></i> My Cart (<small><%= @cart.number_of_items %></small>)
+
   <% end %>
   <%= link_to checkout_path({business_id: @items.first.business_id}), class: "btn btn-primary btn-small" do %> 
     Checkout Now <i class="icon-chevron-right"></i>
@@ -31,8 +32,8 @@
   </ul>
 </div>
 <% content_for :bottom_linkbar do %>
-  <%= link_to cart_path(@cart_id), class: "btn btn-small" do %>
-    <i class="icon-shopping-cart"></i> My Cart
+  <%= link_to cart_path(@cart_id), class: "btn btn-small btn-my-cart" do %>
+    <i class="icon-shopping-cart"></i> My Cart (<small><%= @cart.number_of_items %></small>)
   <% end %>
   <%= link_to checkout_path({business_id: @items.first.business_id}), class: "btn btn-primary btn-small" do %> 
     Checkout Now <i class="icon-chevron-right"></i>

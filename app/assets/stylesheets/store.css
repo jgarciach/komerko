@@ -6,6 +6,12 @@ p.item-description {
   height: 80px;
 }
 
+.btn-my-cart small {
+  font-size: 11px;
+  color: #666;
+}
+
+
 /**********************
 .section-title {
     margin-bottom: 35px;

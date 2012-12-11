@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   def preview 
     @item = Item.find(params[:id])
     @cart_id = get_cart_id(@item.business_id)
+    @cart = Cart.find(@cart_id)
     render layout: 'third_party'
   end
 

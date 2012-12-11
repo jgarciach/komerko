@@ -3,7 +3,8 @@
     <i class="icon-chevron-left"></i> Back to Store
   <% end %>
   <%= link_to cart_path(@cart_id), class: "btn btn-small" do %>
-    <i class="icon-shopping-cart"></i> My Cart
+    <i class="icon-shopping-cart"></i> My Cart (<small><%= @cart.number_of_items %></small>)
+
   <% end %>
   <%= link_to checkout_path({business_id: @item.business_id}), class:"btn btn-small btn-primary" do %>
     Checkout Now <i class="icon-chevron-right"></i>

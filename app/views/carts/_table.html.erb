@@ -7,53 +7,59 @@
     <tr>
       <th>Item</th>
       <th>Quantity</th>
-      <th>Price</th>
+      <th class="price-th">Price</th>
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-      <% item = cart_item.item %>
-      <tr>
-        <td class="item-thumbnail-cell">
-          <div class="row-fluid">
-            <ul class="thumbnails">
-              <li class="span1">
-                <img class="item-thumbnail" src="http://placehold.it/300x300">
-              </li>
-              <li class="span11">
-                <div>
-                  <b><%= link_to item.name, item_path(item) %></b></br>
-                  <small><%= truncate(item.description, length: 60, separator: ' ') %></small>
-                </div> 
-              </li>
-            </ul>
-          </div>
-        </td>
-        <td class="form-cell">
-          <%= form_for(cart_item) do |f| %>
-            <%= f.number_field :quantity, class: "input-mini item-quantity" %>
-            <br />
-            <%= f.submit "Update", class: "update-item-quantity" %>
-          <% end %>
-        </td>
-        <td><span class="item-price"><%= number_to_currency(item.price) %></span></td>
-        <td>
-            <%= link_to( 
-                cart_item_path(cart_item),
-                method: :delete,
-                class: 'btn btn-mini btn-danger remove-from-cart pull-right') do %>
-                      <icon class='icon-trash'></icon> 
+  <% if @cart.number_of_items == "empty" %>
+    <tbody>
+      <tr><td colspan="4"><h2><b><i class="icon-exclamation-sign"></i> Empty.<b> <small>There are no items in your cart.</small></h2></td></tr>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <% item = cart_item.item %>
+        <tr>
+          <td class="item-thumbnail-cell">
+            <div class="row-fluid">
+              <ul class="thumbnails">
+                <li class="span1">
+                  <img class="item-thumbnail" src="http://placehold.it/300x300">
+                </li>
+                <li class="span11">
+                  <div>
+                    <b><%= link_to item.name, item_path(item) %></b></br>
+                    <small><%= truncate(item.description, length: 30, separator: ' ') %></small>
+                  </div> 
+                </li>
+              </ul>
+            </div>
+          </td>
+          <td class="form-cell">
+            <%= form_for(cart_item) do |f| %>
+              <%= f.number_field :quantity, class: "input-mini item-quantity" %>
+              <br />
+              <%= f.submit "Update", class: "update-item-quantity" %>
             <% end %>
-        </td>
+          </td>
+          <td><span class="item-price"><%= number_to_currency(item.price) %></span></td>
+          <td class="delete-td">
+              <%= link_to( 
+                  cart_item_path(cart_item),
+                  method: :delete,
+                  class: 'btn btn-mini btn-danger remove-from-cart pull-right') do %>
+                        <icon class='icon-trash'></icon> 
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr class="total-row">
+        <td colspan="2">Total</td>
+        <td class="total_amount"><span><%= number_to_currency(@cart.total) %></span></td>
+        <td></td>
       </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr class="total-row">
-      <td colspan="2">Total</td>
-      <td><%= number_to_currency(@cart.total) %></td>
-      <td></td>
-    </tr>
-  </tfoot>
+    </tfoot>
+  <% end %>
 </table>

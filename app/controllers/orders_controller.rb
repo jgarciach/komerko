@@ -86,7 +86,9 @@ class OrdersController < ApplicationController
     @business = Business.find(params[:business_id])
     
     if @order.order_type == :delivery
-      @address = Address.new(params[:address])    
+      @address = Address.new(params[:address])   
+      @address.first_name = params[:user][:first_name] 
+      @address.last_name = params[:user][:last_name] 
     end
 
     if params[:create_account?] == "1"

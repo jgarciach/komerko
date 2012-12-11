@@ -1,23 +1,47 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "checkout" %>
+<% end %>
+
 <% content_for :top_linkbar do %> 
   <%= link_to store_business_path(@business.id), class: 'btn btn-small' do %>
     <i class="icon-chevron-left"></i> Back to Store
   <% end %>
   <%= link_to cart_path(@cart.id), class: "btn btn-small" do %>
-    <i class="icon-shopping-cart"></i> My Cart
+    <i class="icon-shopping-cart"></i> My Cart (<small><%= @cart.number_of_items %></small>)
   <% end %>
 <% end %>
 
-<h1>Checkout</h1>
-<%= render "carts/table" %>
-
-<%= render 'form' %>
+<h2>
+  <i class="icon-barcode"></i> Checkout 
+</h2>
+<div class="row-fluid">
+  <div class="span8">
+    <%= render 'form' %>
+  </div>
+  <div class="span4">
+    <div class="cart-div">
+    <h4>
+      <i class="icon-shopping-cart"></i> My Cart 
+      <small>
+        <% if @cart.number_of_items == "empty"%> 
+          empty
+        <% else %>
+          <%= pluralize(@cart.number_of_items, 'item') %>
+        <% end %>
+      </small>
+    </h4>
+    <%= render "carts/table" %>
+    </div>
+  </div>
+</div>
 
 <% content_for :bottom_linkbar do %> 
   <%= link_to store_business_path(@business.id), class: 'btn btn-small' do %>
     <i class="icon-chevron-left"></i> Back to Store
   <% end %>
   <%= link_to cart_path(@cart.id), class: "btn btn-small" do %>
-    <i class="icon-shopping-cart"></i> My Cart
+    <i class="icon-shopping-cart"></i> My Cart (<small><%= @cart.number_of_items %></small>)
+
   <% end %>
 <% end %>
 

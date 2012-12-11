@@ -18,7 +18,7 @@
 <% if @order.order_type == "delivery" %>
   <b>Direccion:</b>
   <address>
-    <%= @address.name %><br>
+    <%= @address.first_name + " " + @address.last_name %><br>
     <%= @address.line1 %><br>
     <%= @address.line2 %><br>
     <%= @address.city%>, <%= @address.state %><br>

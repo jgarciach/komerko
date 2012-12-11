@@ -51,7 +51,11 @@ class Cart < ActiveRecord::Base
     self.cart_items.each do |item|
       items = items + item.quantity
     end
-    items
+    if items == 0
+      return "empty"
+    else
+      items
+    end
   end
   
 end
