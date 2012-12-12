@@ -8,4 +8,10 @@ class Item < ActiveRecord::Base
 
   has_many :order_items
   has_many :orders, through: :order_items
+
+  #Paperclip attr
+  attr_accessible :picture
+  has_attached_file :picture, styles: {thumb: "100x100>", medium: "218x218>"}, 
+                              default_url: "http://placehold.it/400x400"
+
 end

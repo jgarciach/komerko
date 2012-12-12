@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210002519) do
+ActiveRecord::Schema.define(:version => 20121212221455) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -55,10 +55,14 @@ ActiveRecord::Schema.define(:version => 20121210002519) do
   create_table "items", :force => true do |t|
     t.string   "name"
     t.decimal  "price"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.text     "description"
     t.integer  "business_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "order_items", :force => true do |t|
@@ -97,6 +101,10 @@ ActiveRecord::Schema.define(:version => 20121210002519) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -10,6 +10,8 @@
   <dd><%= @item.price %></dd>
 </dl>
 
+<%= image_tag @item.picture.url(:medium) %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               items_path, :class => 'btn'  %>

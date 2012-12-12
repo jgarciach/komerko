@@ -47,3 +47,5 @@ gem 'jquery-rails'
 #Other
 gem 'devise'
 gem 'high_voltage'
+gem 'paperclip', '~> 3.0'
+gem 'aws-sdk'
