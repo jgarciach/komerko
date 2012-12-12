@@ -28,7 +28,7 @@
                 </li>
                 <li class="span11">
                   <div>
-                    <b><%= link_to item.name, item_path(item) %></b></br>
+                    <b><%= link_to item.name, preview_item_path(item) %></b></br>
                     <small><%= truncate(item.description, length: 30, separator: ' ') %></small>
                   </div> 
                 </li>

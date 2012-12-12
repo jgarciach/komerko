@@ -51,6 +51,38 @@
     </ul>
   </div>
 </div>
+<div class="items-table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="price-th">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td class="item-thumbnail-cell">
+            <div class="row-fluid">
+              <ul class="thumbnails">
+                <li class="span1">
+                  <img class="item-thumbnail" src="http://placehold.it/300x300">
+                </li>
+                <li class="span11">
+                  <div>
+                    <b><%= link_to item.name, preview_item_path(item) %></b></br>
+                    <small><%= truncate(item.description, length: 30, separator: ' ') %></small>
+                  </div> 
+                </li>
+              </ul>
+            </div>
+          </td>
+          <td><span class="item-price"><%= number_to_currency(item.price) %></span></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <% content_for :bottom_linkbar do %>
   <%= link_to cart_path(@cart_id), class: "btn btn-small btn-my-cart" do %>
