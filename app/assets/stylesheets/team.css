@@ -1,0 +1,61 @@
+.team-member-pic {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.team-member-info {
+  margin-left: 5px;
+}
+.team-member-info h3 {
+  line-height: 25px;
+}
+h2.page-title {
+  background-color: #154788;
+  background-image: -moz-linear-gradient(top, #1F5EAA, #1C4F8D);
+  background-image: -ms-linear-gradient(top, #1F5EAA, #1C4F8D);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1F5EAA), to(#1C4F8D));
+  background-image: -webkit-linear-gradient(top, #1F5EAA, #1C4F8D);
+  background-image: -o-linear-gradient(top, #1F5EAA, #1C4F8D);
+  background-image: linear-gradient(top, #1F5EAA, #1C4F8D);
+  background-repeat: repeat-x;
+  padding: 10px 20px;  
+  margin-left: -52px;  
+  margin-top: -10px;
+  margin-bottom: 20px;  
+  position: relative;  
+  width: 170px;  
+  -moz-box-shadow: 1px 1px 3px #bbb;  
+  -webkit-box-shadow: 1px 1px 3px #bbb;  
+  box-shadow: 1px 1px 3px #bbb;  
+  color: #fafafa;  
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 10px;
+  -o-border-top-left-radius: 10px;
+  -moz-border-top-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -o-border-bottom-right-radius: 50px;
+  -o-border-top-right-radius: 50px;
+  -moz-border-bottom-right-radius: 50px;
+  -moz-border-top-right-radius: 50px;
+  -webkit-border-bottom-right-radius: 50px;
+  -webkit-border-top-right-radius: 50px;
+}
+
+h2.page-title .arrow {  
+  width: 0; height: 0;  
+  line-height: 0;  
+  border-left: 20px solid transparent;  
+  border-top: 10px solid #062B5C;  
+  top: 100%;  
+  left: 0;  
+  position: absolute;  
+}  
+.i-link {
+  font-size: 24px;
+  color: #666;
+}
+.i-link:hover {
+  text-decoration: none;
+}
