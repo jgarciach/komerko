@@ -12,25 +12,46 @@
   <% end %>
 <% end %>
 
-<div class="row-fluid section">
-  <ul class="thumbnails items">
-    <% @items.each do |item| %>
-      <li class="span4 item">
-        <div class="thumbnail">
-          <img src="http://placehold.it/400x400">
-          <div class="caption">
-            <h3 class="item-name"><%= link_to truncate(item.name, length: 28, separator: ' '), preview_item_path(item) %></h3>
-            <h4><small class="item-price"><%= number_to_currency(item.price) %></small></h4>
-            <p class="item-description"><%= truncate(item.description, length: 100, separator: ' ')  %></p>
+<div class="large-thumbnails">
+  <div class="row-fluid section">
+    <ul class="thumbnails items">
+      <% @items.each do |item| %>
+        <li class="span4 item">
+          <div class="thumbnail">
+            <img src="http://placehold.it/400x400">
+            <div class="caption">
+              <h3 class="item-name"><%= link_to truncate(item.name, length: 28, separator: ' '), preview_item_path(item) %></h3>
+              <h4><small class="item-price"><%= number_to_currency(item.price) %></small></h4>
+              <p class="item-description"><%= truncate(item.description, length: 100, separator: ' ')  %></p>
+            </div>
+            <div class="actions">
+              <%= link_to 'View', preview_item_path(item), class: 'btn' %> 
+            </div>
           </div>
-          <div class="actions">
-            <%= link_to 'View', preview_item_path(item), class: 'btn' %> 
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+<div class="small-thumbnails">
+  <div class="row-fluid section">
+    <ul class="thumbnails items">
+      <% @items.each do |item| %>
+        <li class="span3 item">
+          <%= link_to preview_item_path(item), class: 'thumbnail' do %> 
+            <img src="http://placehold.it/400x400">
+          <% end %>
+          <div class="item-info" style="display: none;">
+            <span class="item-price"><%= number_to_currency(item.price) %></span>
+            <p class="item-name-and-description"><span class="item-name"><%= link_to truncate(item.name, length: 25, separator: ' '), preview_item_path(item) %></span><br /><%= truncate(item.description, length: 50, separator: ' ')  %></p>
+            <div class="item-foggy-bg"></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <% content_for :bottom_linkbar do %>
   <%= link_to cart_path(@cart_id), class: "btn btn-small btn-my-cart" do %>
     <i class="icon-shopping-cart"></i> My Cart (<small><%= @cart.number_of_items %></small>)

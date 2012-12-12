@@ -13,6 +13,35 @@ function fixThumbnailMargins() {
     });
 }
 
+function moveDivIntoAnchor() {
+  var items = new Array();
+  var a = new Array();
+  items = $("div.item-info");
+  a = $("a.thumbnail");
+  for (var i = 0; i < items.length; i++) {
+   $(a[i]).append( $(items[i]));
+  }
+}
+
+function showItemInfoOnHover() {
+  $(".small-thumbnails img").hover(
+    function() {
+      $(this).next(".item-info").show();
+    },
+    function() {
+    }
+  );
+  $(".small-thumbnails .item-foggy-bg").hover(
+    function() {
+    },
+    function() {
+      $(this).parent().hide();
+    }
+  );
+}
+
 $(function () {
   fixThumbnailMargins();
+  moveDivIntoAnchor();
+  showItemInfoOnHover();
 });

@@ -35,10 +35,10 @@
 .cart-div tr.total-row {
   border-radius: 10px;
 }
-
 .cart-div .total-row td:first-child {
   border-bottom-left-radius: 10px;
 }
 .cart-div .total-row td:last-child {
   border-bottom-right-radius: 10px;
 }
+

@@ -11,7 +11,43 @@ p.item-description {
   color: #666;
 }
 
+.small-thumbnails li.item {
+  position: relative;
+}
+.small-thumbnails span.item-price {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color:#000;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px;
+  color: #000
+}
+.small-thumbnails p.item-name-and-description {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 8px;
+  margin: 0px;
+  color: #000;
+}
 
+.small-thumbnails span.item-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.small-thumbnails div.item-foggy-bg {
+  background: #FFF;
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
 /**********************
 .section-title {
     margin-bottom: 35px;
