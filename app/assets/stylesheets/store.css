@@ -48,6 +48,17 @@ p.item-description {
   top:0;
   left:0;
 }
+
+.item-thumbnail-cell li, .item-thumbnail-cell ul {
+  margin-bottom: 0;
+}
+
+.big-items-list span.item-price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #888;
+}
+
 /**********************
 .section-title {
     margin-bottom: 35px;
