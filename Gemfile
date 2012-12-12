@@ -46,3 +46,4 @@ gem 'jquery-rails'
 
 #Other
 gem 'devise'
+gem 'high_voltage'
