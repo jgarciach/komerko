@@ -40,8 +40,29 @@ function showItemInfoOnHover() {
   );
 }
 
+function toggleItemLayouts() {
+  $(".btn-small-thumbnails").click(function() {
+    $("div.large-thumbnails, div.items-table, div.big-items-list").hide();
+    $("div.small-thumbnails").show();
+  });
+  $(".btn-large-thumbnails").click(function() {
+    $("div.small-thumbnails, div.items-table, div.big-items-list").hide();
+    $("div.large-thumbnails").show();
+  });
+  $(".btn-items-table").click(function() {
+    $("div.large-thumbnails, div.small-thumbnails, div.big-items-list").hide();
+    $("div.items-table").show();
+  });
+  $(".btn-items-list").click(function() {
+    $("div.large-thumbnails, div.items-table, div.small-thumbnails").hide();
+    $("div.big-items-list").show();
+  });
+}
+
 $(function () {
   fixThumbnailMargins();
   moveDivIntoAnchor();
   showItemInfoOnHover();
+  toggleItemLayouts();
+  $(".btn-large-thumbnails").click();
 });
