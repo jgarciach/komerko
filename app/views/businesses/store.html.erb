@@ -80,19 +80,6 @@
                 </li>
               </ul>
             </div>
-<div class="row-fluid">
-              <ul class="thumbnails">
-                <li class="span1">
-                  <img class="item-thumbnail" src="http://placehold.it/300x300">
-                </li>
-                <li class="span11">
-                  <div>
-                    <b><%= link_to item.name, preview_item_path(item) %></b></br>
-                    <small><%= truncate(item.description, length: 100, separator: ' ') %></small>
-                  </div> 
-                </li>
-              </ul>
-            </div>
           </td>
           <td><span class="item-price"><%= number_to_currency(item.price) %></span></td>
         </tr>
