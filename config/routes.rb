@@ -6,7 +6,6 @@ Komerko::Application.routes.draw do
 
   match '/home' => 'high_voltage/pages#show', id: 'home'
   root to: 'high_voltage/pages#show', id: 'home'
-  match '/*id' => 'pages#show', as: :page, format: false
   match '/team' => 'high_voltage/pages#show', id: 'team'
 
   resources :businesses do
@@ -30,6 +29,8 @@ Komerko::Application.routes.draw do
     end
   end
 
+  match '/*id' => 'pages#show', as: :page, format: false
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
