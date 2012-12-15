@@ -12,7 +12,7 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @businesses }
@@ -23,6 +23,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/1.json
   def show
     @business = Business.find(params[:id])
+    @items = @business.items
 
     respond_to do |format|
       format.html # show.html.erb

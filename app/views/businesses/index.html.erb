@@ -1,6 +1,6 @@
 <h2 class="businesses-title"><i class="icon-briefcase"></i> Businesses <span class="arrow"></span> </h2>
 
-<table>
+<table class="table table striped">
   <tr>
     <th>Name</th>
     <th>Email</th>
@@ -14,9 +14,9 @@
     <td><%= business.email %></td>
     <td><%= business.phone %></td>
     <td>
-      <%= link_to 'Show', business %>
-      <%= link_to 'Edit', edit_business_path(business) %>
-      <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Show', business, class: "btn btn-mini btn-primary" %>
+      <%= link_to 'Edit', edit_business_path(business), class: "btn btn-mini btn-primary" %>
+      <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-primary" %>
     </td>
   </tr>
 <% end %>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Business', new_business_path %>
+<%= link_to 'New Business', new_business_path, class: "btn" %>
