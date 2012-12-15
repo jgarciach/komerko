@@ -5,6 +5,7 @@ noise.png: noise-2fd5cf20c78f3288deb70c9bb2dd8463.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 application.js: application-d04c5f4d092b0b0ed3a82d14d832d30c.js
 application.css: application-4dd3f04bdc19933f4dd913e4383327a3.css
+bootstrap_and_overrides.css: bootstrap_and_overrides-112e72abf337721280ee360e407e3fd5.css
 store.css: store-e7f7ec659ce91fe5fac737c41451f29e.css
 table.css: table-3a23a1c166b3acb515092cae32dca228.css
 third_party.css: third_party-eba45a5b9e2f4237cf625816eb66c489.css
