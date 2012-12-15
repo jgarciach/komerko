@@ -11,13 +11,6 @@ class Order < ActiveRecord::Base
   validates :address, presence: true, if: :for_delivery?
   validates :email, presence: true, if: :for_guest?
 
-  #Sets user_id on orders with email == user_email
-  def self.associate_orders_with_user(user_email, user_id)
-    Order.where(email: user_email).each do |order|
-        order.assign_user(user_id) 
-    end
-  end
-
   def for_delivery?
     order_type == "delivery"
   end
