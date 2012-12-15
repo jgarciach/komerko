@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Komerko</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="noise">
-  <div id="project_header">
-    <a id="project_name" href="/"><h1>komerko</h1></a>
-    <div class="pull-right">
-    <% if user_signed_in? %>
-      <%= current_user.first_name %>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path %>
-      <%= link_to "Sign Up", new_user_registration_path %>
-    <% end %>
+  <head>
+    <meta charset="utf-8">
+    <title>Komerko</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="noise">
+    <div id="project_header">
+      <a id="project_name" href="<% page_path("home")%>" ><h1>komerko</h1></a>
+      <div class="pull-right">
+      <% if user_signed_in? %>
+        <span class="user-nav-display pull-right">Hello, <b><%= current_user.first_name %></b>(<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>)</span>
+      <% else %>
+        <span class="pull-right user-nav-display">
+          <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>
+        </span>
+      <% end %>
+      </div>
     </div>
-  </div>
-  
-  <div class="container" id="content">
-    <div class="container-fluid" id="wrapper">
-      <%= yield %>
+    
+    <div class="container" id="content">
+      <div class="container-fluid" id="wrapper">
+        <%= yield %>
+      </div>
+      <footer>
+        <%= link_to "The Team", page_path('team'), class: "footer-links" %>
+      </footer>
     </div>
-  </div>
-
-  <footer>
-  </footer>
-
-  <!-- Le javascript -->
-  <%= javascript_include_tag "application" %>
-</body>
+    
+    <!-- Le javascript -->
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

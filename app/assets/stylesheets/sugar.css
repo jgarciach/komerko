@@ -47,6 +47,14 @@ body {
   -o-transition: color 150ms ease;
 }
 
+#project_name h1:hover {
+ color: #FD8443;
+}
+.user-nav-display {
+ margin-top: 30px;
+ margin-right: 18px;
+ text-shadow: 0 1px 0 white;
+}
 #wrapper {
   background-color: #fff;
   border: 2px #fff solid;
@@ -55,4 +63,17 @@ body {
   -moz-box-shadow:    0 1px 3px #999;
   -webkit-box-shadow: 0 1px 3px #999;
   box-shadow:         0 1px 3px #999;
+}
+footer {
+  padding-top: 10px;
+  margin-right: 18px;
+  margin-left: 18px;
+}
+.footer-links {
+  text-shadow: 0 1px 0 white;
+  color: #666;
+}
+.footer-links:hover {
+  color: #333;
+  text-decoration: none;
 }
