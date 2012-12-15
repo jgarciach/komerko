@@ -60,6 +60,13 @@ module Komerko
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+    
+    #Avoid generation of extra tests
+    config.generators do |g| 
+      g.controller_specs false
+      g.view_specs false
+      g.helper_specs false
+    end
 
   end
 end

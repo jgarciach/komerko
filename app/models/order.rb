@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :order_type, :guest, :email, :first_name, :last_name, :user_id, :address_id, :business_id
+  attr_accessible :order_type, :email, :first_name, :last_name, :address_id, :business_id
 
   belongs_to :user
   belongs_to :address 
@@ -8,52 +8,77 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :items, through: :order_items
 
-  def transfer_cart_items(cart_items)
-      #Converts cart items into order items
-      cart_items.each do |cart_item|
-          item = cart_item.item
-          OrderItem.create(item_id: item.id, order_id: id, price_paid_per_unit: item.price, quantity: cart_item.quantity)
-          #Item no longer in cart after "transfer"
-          cart_item.destroy
-      end
+  validates :address, presence: true, if: :for_delivery?
+  validates :email, presence: true, if: :for_guest?
+
+  def for_delivery?
+    order_type == "delivery"
+  end
+
+  def for_guest?
+    user_id == nil
   end
 
   def total
     total = 0
-    self.order_items.each do |item|
-      total = total + (item.price_paid_per_unit*item.quantity)
+    self.order_items.each do |o|
+      total += (o.price_paid_per_unit*o.quantity)
     end
     total
   end
+ 
+  def checkout(business, cart, current_user, user_info, address)
+    set_user_or_contact_info(current_user, user_info)
+    
+    if for_delivery? 
+      if address.valid?
+        address.save
+        self.address = address
+      else
+        return false
+      end
+    end
 
+    if save 
+      OrderItem.transfer_cart_items_into_order(cart.cart_items, self.id)
+    else
+      return false
+    end
+    
+    return true
+  end
+  
+  #Takes user object or info hash containing first_name, last_name and email
+  def set_user_or_contact_info(user, user_info)
+    if user
+      self.user_id = user.id
+    else
+     self.first_name = user_info[:first_name]
+     self.last_name  = user_info[:last_name]
+     self.email      = user_info[:email]
+    end
+  end
+  
   def assign_user(uid)
     #Replaces contact fields and sets user reference
     self.user_id = uid
-    update_attributes(email: nil, first_name: nil, last_name: nil)
+    self.update_attributes(email: nil, first_name: nil, last_name: nil)
   end
   
-  #Attribute delegation to user 
+  #Attribute delegation to user
+  def delegate_to_user(attr_name)
+    user ? user.read_attribute(attr_name) : read_attribute(attr_name)
+  end
+
   def first_name
-    if user
-        user.first_name
-    else
-        read_attribute(:first_name)
-    end
+    delegate_to_user(:first_name)
   end
   
   def last_name
-    if user
-        user.last_name
-    else
-        read_attribute(:last_name)
-    end
+    delegate_to_user(:last_name)
   end
 
   def email 
-    if user
-        user.email
-    else
-        read_attribute(:email)
-    end
+    delegate_to_user(:email)
   end
 end

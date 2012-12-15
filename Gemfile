@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
-
+gem 'rake', '10.0.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development do
@@ -43,6 +43,10 @@ gem 'jquery-rails'
 
 # To use debugger
 #gem 'debugger'
+
+#Testing
+gem 'rspec-rails', group: [:test, :development]
+gem 'capybara', group: [:test]
 
 #Other
 gem 'devise'
