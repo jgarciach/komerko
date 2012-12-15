@@ -1,12 +1,10 @@
-<h1>Listing businesses</h1>
+<h2 class="businesses-title"><i class="icon-briefcase"></i> Businesses <span class="arrow"></span> </h2>
 
-<table>
+<table class="table table striped">
   <tr>
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -15,13 +13,15 @@
     <td><%= business.name %></td>
     <td><%= business.email %></td>
     <td><%= business.phone %></td>
-    <td><%= link_to 'Show', business %></td>
-    <td><%= link_to 'Edit', edit_business_path(business) %></td>
-    <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to 'Show', business, class: "btn btn-mini btn-primary" %>
+      <%= link_to 'Edit', edit_business_path(business), class: "btn btn-mini btn-primary" %>
+      <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-primary" %>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Business', new_business_path %>
+<%= link_to 'New Business', new_business_path, class: "btn" %>
