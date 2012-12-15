@@ -1,5 +1,9 @@
 Komerko::Application.routes.draw do
 
+  resources :order_items
+
+  resources :orders
+
   match '/home' => 'high_voltage/pages#show', id: 'home'
   match '/team' => 'high_voltage/pages#show', id: 'team'
 

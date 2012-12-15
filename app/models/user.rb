@@ -14,11 +14,4 @@ class User < ActiveRecord::Base
   has_many :carts
   has_many :orders
   has_many :addresses
-
-  def associate_orders_with_user
-    #Sets user_id on orders with email == user.email
-    Order.where("email = ?", email).each do |order|
-        order.assign_user(id) 
-    end
-  end
 end

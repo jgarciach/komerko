@@ -42,44 +42,47 @@
       <% if not user_signed_in? %>
         <h3>Contact Information</h3>
         <div class="control-group">
-          <%= u.label :email, class: "control-label" %>
-          <div class="controls">
-            <%= u.email_field :email %>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls"> 
-            <label for="create_account_" class="checkbox">
-              <%= check_box_tag "create_account?", "1" %>
-              Create account (only add a password)
-            </label>
-          </div>
-        </div>
-        <div class="control-group password-field-container">
-          <%= u.label :password, class: "control-label" %>
-          <div class="controls">
-            <%= u.password_field :password %>
-          </div>
-        </div>
-        <div class="control-group password-field-container">
-          <%= u.label :password_confirmation, class: "control-label" %>
-          <div class="controls">
-            <%= u.password_field :password_confirmation %>
-          </div>
-        </div>
-
-        <div class="control-group">
           <%= u.label :first_name, class: "control-label" %>
           <div class="controls">
             <%= u.text_field :first_name %>
           </div>
         </div>
+        
         <div class="control-group">
           <%= u.label :last_name, class: "control-label" %>
           <div class="controls">
             <%= u.text_field :last_name %>
           </div>
         </div>
+          
+          <div class="control-group">
+          <%= u.label :email, class: "control-label" %>
+          <div class="controls">
+            <%= u.email_field :email %>
+          </div>
+        </div>
+        <!-- 
+        <div class="control-group">
+          <div class="controls"> 
+            <label for="create_account_" class="checkbox">
+              <%#= check_box_tag "create_account?", "1" %>
+              Create account (only add a password)
+            </label>
+          </div>
+        </div>
+        <div class="control-group password-field-container">
+          <%#= u.label :password, class: "control-label" %>
+          <div class="controls">
+            <%#= u.password_field :password %>
+          </div>
+        </div>
+        <div class="control-group password-field-container">
+          <%#= u.label :password_confirmation, class: "control-label" %>
+          <div class="controls">
+            <%= u.password_field :password_confirmation %>
+          </div>
+       </div>
+      -->
       <% end %>
     <% end %>
   <%= fields_for @address do |a| %>
